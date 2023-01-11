@@ -66,5 +66,16 @@ async function fetchPosts() {
 - isLoading은 존재하지만 isFetching은 존재하지 않음( 캐시된 항목이 없어서 )
 - useQuery가 요청이실패할경우 자동으로 재요청을 세 번까지 하지만 , useMutation은 재요청을 하지 않는다 (임의로 설정은 가능)
 - 공식문서 : https://react-query.tanstack.com/guides/mutations
-- 
-- 
+
+# ✨요약
+- 패키지 설치
+- QueryClient 생성해서 QueryProvider에 추가(∴모든 자식 컴포넌트가 캐시와 훅 사용 가능)
+- useQuery훅 이용하여 데이터를 서버에서 가져오고 최신상태 확인
+- useQuery의 반환객체로 data 있는데 이는 서버에서 가져온 데이터임
+- useQuery의 반환객체로 isLoading/isFetching/error 있는데 이걸로 특정 쿼리의 상태를 사용자에게 알려줄 수 있음
+- staleTime : 데이터가 사용 가능한 상태로 유지되는 시간(캐시 유통기한)(이게지나면 서버까지 돌아가 데이터 정확한지 확인요청보내야함)
+- 의존성배열로 처리된 쿼리키<br/>
+   -> 쿼리키가 변경될 경우 useQuery Hook은 쿼리를 반복한다(그래서 데이터함수가 바뀌면 쿼리키도 바뀜<br/>
+   -> 데이터를 변경해야 하는경우 다시 실행될 수 있도록)
+- 페이지네이션 & 프리패칭
+- useMutation 
