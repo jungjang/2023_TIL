@@ -45,4 +45,26 @@ async function fetchPosts() {
 - 디폴트값 : 5분
 - 캐시가 만료되면 클라이언트는 데이터를 다시 사용할 수 없음
 
-### Data Prefetching 부터 작성 다시 시작( 유데미 14강)
+### Data Prefetching 
+- 데이터를 미리 가져와 캐시에 넣어서 사용자가 기다릴 필요가 없도록 하는 것
+- 사용자가 사용할 법한 모든 데이터에 프리페칭을 사용함
+- const queryClient = useQueryClient(); 로 정의 하고 시작
+- onClick이벤트로 하는 것보다 useEffect로 활용하는게 좋다
+
+### isFetching VS isLoading
+- isFetching : async 쿼리 함수가 해결되지 않았을 때 참에 해당 (아직 데이터를 가져오는 중)
+- isLoading : isFetching이 참이면서 쿼리에 대해 캐시된 데이터가 없는 상태(isFetching의 부분집합이라고 생각)
+- 즉, isLoading이 참이다 => isFetching 또한 항상 참임
+
+### Mutations
+- 서버에 데이터를 업데이트하도록 서버에 네트워크 호출을 실시
+- 추가, 삭제, 변경같은 작업
+- useQuery와 상당히 유사함
+- mutate함수를 반환함 ( 이는 우리가 변경사항을 토대로 서버를 호출할 때 사용함 )
+- 데이터를 저장하지 않으므로 쿼리키가 필요 없음
+- 우리가 인수로 전달하는 muatation함수는 그 자체도 인수를 받을 수 있다.
+- isLoading은 존재하지만 isFetching은 존재하지 않음( 캐시된 항목이 없어서 )
+- useQuery가 요청이실패할경우 자동으로 재요청을 세 번까지 하지만 , useMutation은 재요청을 하지 않는다 (임의로 설정은 가능)
+- 공식문서 : https://react-query.tanstack.com/guides/mutations
+- 
+- 
