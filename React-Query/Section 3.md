@@ -28,3 +28,10 @@
    hasNextPage : getNextPageParam 함수의 반환 값을 기반으로 하는데 이 프로퍼티를 useInfiniteQuery에 전달해서 마지막 쿼리의 데이터를 어떻게 사용할지 지시<br/>
                 (hasNextPage가 undefined면 더 이상 데이터가 없는거고, 이 경우 false가 됨)<br/>
    isFetchingNextPage : 다음페이지를 가져오는지 아니면 일반적인 페칭인지 구별하게 해줌 <br/>                    
+
+### useInfiniteScroll의 흐름
+- 먼저 컴포넌트가 마운트 됨<br/>
+  이 시점에서 useInfiniteScroll이 반환한 객체의 data 프로퍼티가 정의되어있지않음 (∵아직 쿼리 안만들어서)
+- 그 다음 useInfiniteScroll은 쿼리 함수를 이용해서 첫 페이지를 가져옴<br/>
+  (쿼리함수는 useInfiniteScroll의 첫 번째 인수이고 , pageParam을 인수로 받음) 
+- 그 후 리액트쿼리가 getNextPageParam 을 실행
