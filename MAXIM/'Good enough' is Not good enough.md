@@ -1,1 +1,1 @@
-# 'Good enough' is Not good enough.
+# 'Good enough' is NOT GOOD ENOUGH.
